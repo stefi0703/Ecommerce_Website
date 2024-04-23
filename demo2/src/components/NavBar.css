@@ -1,0 +1,45 @@
+.navbar {
+  background-color: #38B449;
+  color: white;
+  padding: 5px;
+  display: flex;
+  align-items: center; /* This will vertically center the items in the navbar */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.navbar-brand img {
+  height: auto; /* maintain aspect ratio */
+  width: 80px; /* adjust as needed */
+}
+
+.search-container {
+  flex-grow: 1; /* Make search container take up the remaining space */
+  margin: 0 20px; /* Add some margin around the search bar */
+}
+
+.search-input {
+  width: 100%; /* Make the search input expand to fill the container */
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.navbar-icons {
+  display: flex; /* Align the icons in a row */
+  align-items: center; /* Center the icons vertically */
+  margin-right: 20px; /* Add some margin to the right of the icons */
+}
+
+.navbar-icon-link img {
+  width: 24px; /* Set a standard size for your icons */
+  height: auto;
+  margin-left: 10px; /* Add some space between the icons */
+}
+
+.icon-text {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
