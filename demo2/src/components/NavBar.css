@@ -1,5 +1,11 @@
-.navbar {
-  background-color: #38b449;
+.navbar,
+.sub-navbar {
+  background: linear-gradient(
+    to right,
+    #8ec958,
+    #f7e8d4,
+    #8ec958
+  ); /* Set the background color */
   color: white;
   padding: 5px;
   display: flex;
@@ -9,6 +15,30 @@
   left: 0;
   right: 0;
   position: relative;
+}
+
+.sub-navbar {
+  background: linear-gradient(
+    to right,
+    #38b449,
+    #6fbf6b,
+    #0b5805
+  ); /* Sub-navbar has a different background */
+  height: 40px; /* Define a fixed height */
+  display: flex;
+  justify-content: space-around; /* Space items evenly */
+}
+
+.sub-navbar a {
+  color: white;
+  text-decoration: none; /* No underline */
+  padding: 10px; /* Padding for clickable area */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.sub-navbar a:hover {
+  background-color: #6fbf6b; /* Change background on hover */
+  color: #fff;
 }
 
 .navbar-brand img {
@@ -44,7 +74,7 @@
 
 .navbar-icon-link {
   text-decoration: none; /* Remove default underline */
-  color: #fff; /* Text color */
+  color: #0b5805; /* Text color */
   font-size: 16px; /* Adjust font size */
   margin-right: 20px; /* Add some margin between links */
   display: flex; /* Align items in a row */
@@ -53,7 +83,7 @@
 }
 
 .navbar-icon-link:hover {
-  color: #ddd; /* Change color on hover */
+  color: #fff; /* Change color on hover */
 }
 
 .icon-text {
