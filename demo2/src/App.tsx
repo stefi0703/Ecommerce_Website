@@ -6,18 +6,19 @@ import "./App.css";
 
 const App: React.FC = () => {
   const [cartCount, setCartCount] = useState<number>(0); // Define state with TypeScript type
+  const [favoriteCount, setFavoriteCount] = useState<number>(0);
 
   const handleAddToCart = () => {
     setCartCount((prevCount) => prevCount + 1);
   };
 
   const handleAddToFavorite = () => {
-    console.log("Added to favorite");
+    setFavoriteCount((prevCount) => prevCount + 1);
   };
 
   return (
     <div className="app">
-      <NavBar cartCount={cartCount} />
+      <NavBar cartCount={cartCount} favoriteCount={favoriteCount} />
       <Products
         onAddToCart={handleAddToCart}
         onAddToFavorite={handleAddToFavorite}

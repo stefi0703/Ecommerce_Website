@@ -21,15 +21,42 @@
 }
 
 .search-input {
-  width: 100%; /* Make the search input expand to fill the container */
-  padding: 10px;
-  border-radius: 5px;
+  width: 100%;
+  padding: 8px 15px; /* Adjusted padding */
+  border-radius: 20px; /* Rounded corners */
+  border: 1px solid #ccc; /* Light border */
+  background-color: #f8f8f8; /* Light gray background */
+  transition: border-color 0.3s; /* Smooth border color transition */
+}
+
+.search-input:focus {
+  border-color: #0ea022; /* Highlight border color on focus */
+  outline: none; /* Remove default focus outline */
+  border-width: 3px;
 }
 
 .navbar-icons {
   display: flex; /* Align the icons in a row */
   align-items: center; /* Center the icons vertically */
-  margin-right: 20px; /* Add some margin to the right of the icons */
+  padding: 20px;
+}
+
+.navbar-icon-link {
+  text-decoration: none; /* Remove default underline */
+  color: #fff; /* Text color */
+  font-size: 16px; /* Adjust font size */
+  margin-right: 20px; /* Add some margin between links */
+  display: flex; /* Align items in a row */
+  align-items: center; /* Center vertically */
+  transition: color 0.3s; /* Smooth color transition */
+}
+
+.navbar-icon-link:hover {
+  color: #ddd; /* Change color on hover */
+}
+
+.icon-text {
+  margin-left: 5px; /* Add some space between icon and text */
 }
 
 .navbar-icon-link img {
