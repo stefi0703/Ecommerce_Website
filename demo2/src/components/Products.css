@@ -1,5 +1,6 @@
 .products-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px; /* This adds space between the products */
-  }
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* This adds space between the products */
+  justify-content: center;
+}
