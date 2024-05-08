@@ -1,21 +1,27 @@
 // App.tsx
-import React, { useState } from 'react';
-import NavBar from './components/NavBar';
-import CartIcon from './components/Cart';
-import ProductsPage from './components/Products';
-import './App.css';
+import React, { useState } from "react";
+import NavBar from "./components/NavBar";
+import Products from "./components/Products";
+import "./App.css";
 
 const App: React.FC = () => {
   const [cartCount, setCartCount] = useState<number>(0); // Define state with TypeScript type
 
   const handleAddToCart = () => {
-    setCartCount(prevCount => prevCount + 1);
+    setCartCount((prevCount) => prevCount + 1);
+  };
+
+  const handleAddToFavorite = () => {
+    console.log("Added to favorite");
   };
 
   return (
     <div className="app">
       <NavBar cartCount={cartCount} />
-      <ProductsPage onAddToCart={handleAddToCart} />
+      <Products
+        onAddToCart={handleAddToCart}
+        onAddToFavorite={handleAddToFavorite}
+      />
       {/* other components or content */}
     </div>
   );

@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import './Product.css';
+import React, { useState } from "react";
+import "./Product.css";
 
 interface ProductProps {
   id: number;
   title: string;
+  category: string;
   description: string;
   price: number;
   images: string[];
@@ -11,7 +12,15 @@ interface ProductProps {
   onAddToFavorite: () => void;
 }
 
-const Product: React.FC<ProductProps> = ({ title, description, price, images, onAddToCart, onAddToFavorite }) => {
+const Product: React.FC<ProductProps> = ({
+  title,
+  category,
+  description,
+  price,
+  images,
+  onAddToCart,
+  onAddToFavorite,
+}) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const nextImage = () => {
@@ -19,7 +28,9 @@ const Product: React.FC<ProductProps> = ({ title, description, price, images, on
   };
 
   const prevImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+    setCurrentImageIndex(
+      (prevIndex) => (prevIndex - 1 + images.length) % images.length
+    );
   };
 
   return (
@@ -32,13 +43,18 @@ const Product: React.FC<ProductProps> = ({ title, description, price, images, on
         />
         {images.length > 1 && (
           <>
-            <button className="carousel-control left" onClick={prevImage}>&lt;</button>
-            <button className="carousel-control right" onClick={nextImage}>&gt;</button>
+            <button className="carousel-control left" onClick={prevImage}>
+              &lt;
+            </button>
+            <button className="carousel-control right" onClick={nextImage}>
+              &gt;
+            </button>
           </>
         )}
       </div>
       <div className="product-details">
         <h3 className="product-title">{title}</h3>
+        <p className="product-category">Category:{category}</p>
         <p className="product-description">{description}</p>
         <p className="product-price">${price}</p>
         <button onClick={onAddToCart} className="addtocartbutton">

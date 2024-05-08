@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #38B449;
+  background-color: #38b449;
   color: white;
   padding: 5px;
   display: flex;
@@ -35,6 +35,7 @@
 .navbar-icon-link img {
   width: 24px; /* Set a standard size for your icons */
   height: auto;
+  margin-right: 10px;
   margin-left: 10px; /* Add some space between the icons */
 }
 
@@ -42,4 +43,3 @@
   margin-right: 5px;
   margin-left: 5px;
 }
-
