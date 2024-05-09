@@ -4,13 +4,19 @@ import hackademyLogo from "./logo-color.png";
 import helpIcon from "./help.png"; // Placeholder path for help icon
 import Cart from "./Cart"; // Import Cart component
 import Favorite from "./Favorite"; // Import Favorite component
+import { ProductData } from "./Product"; // Import ProductData type from Products component
 
 interface NavBarProps {
   cartCount: number; // Pass cartCount as prop
   favoriteCount: number; // Pass favoriteCount as prop
+  cartProducts: ProductData[]; // Pass cartProducts as prop
 }
 
-const NavBar: React.FC<NavBarProps> = ({ cartCount, favoriteCount }) => {
+const NavBar: React.FC<NavBarProps> = ({
+  cartCount,
+  favoriteCount,
+  cartProducts,
+}) => {
   const [search, setSearch] = useState("");
 
   return (
@@ -39,7 +45,7 @@ const NavBar: React.FC<NavBarProps> = ({ cartCount, favoriteCount }) => {
           </a>
           <a href="/cart" className="navbar-icon-link cart0">
             <span className="icon-text">Cart</span>
-            <Cart cartCount={cartCount} />
+            <Cart cartCount={cartCount} cartProducts={cartProducts} />
           </a>
         </div>
       </nav>

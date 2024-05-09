@@ -2,22 +2,15 @@
 import React, { useState, useEffect } from "react";
 import Product from "./Product";
 import "./Products.css";
-interface ProductData {
-  id: number;
-  title: string;
-  category: string;
-  description: string;
-  price: number;
-  images: string[];
-}
+import { ProductData } from "./Product";
 
 interface ProductsProps {
-  onAddToCart: () => void;
+  onAddToCart: (product: ProductData) => void; // Adjust the type here
   onAddToFavorite: () => void;
 }
 
 const Products: React.FC<ProductsProps> = ({
-  onAddToCart,
+  onAddToCart = (product: ProductData) => {},
   onAddToFavorite,
 }) => {
   const [products, setProducts] = useState<ProductData[]>([]);

@@ -2,14 +2,20 @@
 import React, { useState } from "react";
 import NavBar from "./components/NavBar";
 import Products from "./components/Products";
+import { ProductData } from "./components/Product";
 import "./App.css";
 
-const App: React.FC = () => {
-  const [cartCount, setCartCount] = useState<number>(0); // Define state with TypeScript type
-  const [favoriteCount, setFavoriteCount] = useState<number>(0);
+// Define ProductData type
 
-  const handleAddToCart = () => {
+const App: React.FC = () => {
+  const [cartCount, setCartCount] = useState<number>(0);
+  const [favoriteCount, setFavoriteCount] = useState<number>(0);
+  const [cartProducts, setCartProducts] = useState<ProductData[]>([]);
+
+  // handleAddToCart function should accept ProductData as argument
+  const handleAddToCart = (product: ProductData) => {
     setCartCount((prevCount) => prevCount + 1);
+    setCartProducts([...cartProducts, product]);
   };
 
   const handleAddToFavorite = () => {
@@ -18,7 +24,12 @@ const App: React.FC = () => {
 
   return (
     <div className="app">
-      <NavBar cartCount={cartCount} favoriteCount={favoriteCount} />
+      <NavBar
+        cartCount={cartCount}
+        favoriteCount={favoriteCount}
+        cartProducts={cartProducts}
+      />{" "}
+      {/* Pass cartProducts as a prop */}
       <Products
         onAddToCart={handleAddToCart}
         onAddToFavorite={handleAddToFavorite}

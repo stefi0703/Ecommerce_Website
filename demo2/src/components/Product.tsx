@@ -1,6 +1,15 @@
 import React, { useState } from "react";
 import "./Product.css";
 
+export interface ProductData {
+  id: number;
+  title: string;
+  category: string;
+  description: string;
+  price: number;
+  images: string[];
+}
+
 interface ProductProps {
   id: number;
   title: string;
@@ -8,11 +17,12 @@ interface ProductProps {
   description: string;
   price: number;
   images: string[];
-  onAddToCart: () => void;
+  onAddToCart: (product: ProductData) => void;
   onAddToFavorite: () => void;
 }
 
 const Product: React.FC<ProductProps> = ({
+  id,
   title,
   category,
   description,
@@ -57,7 +67,12 @@ const Product: React.FC<ProductProps> = ({
         <p className="product-category">Category:{category}</p>
         <p className="product-description">{description}</p>
         <p className="product-price">${price}</p>
-        <button onClick={onAddToCart} className="addtocartbutton">
+        <button
+          onClick={() =>
+            onAddToCart({ id, title, price, category, description, images })
+          }
+          className="addtocartbutton"
+        >
           Add to Cart
         </button>
         <button onClick={onAddToFavorite} className="addtofavoritebutton">
