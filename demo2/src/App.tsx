@@ -36,8 +36,16 @@ const App: React.FC = () => {
   };
 
   const handleAddToFavorite = (product: ProductData) => {
-    setFavoriteCount((prevCount) => prevCount + 1);
-    setFavoriteProducts([...favoriteProducts, product]);
+    // Check if the product already exists in the favorite products list
+    const productExists = favoriteProducts.some((p) => p.id === product.id);
+
+    if (!productExists) {
+      setFavoriteCount((prevCount) => prevCount + 1);
+      setFavoriteProducts([...favoriteProducts, product]);
+    } else {
+      // Product already exists in favorites
+      alert("This product is already in favorites!");
+    }
   };
 
   const handleDeleteProduct = (productId: number, quantity: number) => {
