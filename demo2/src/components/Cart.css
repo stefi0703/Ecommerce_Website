@@ -20,8 +20,8 @@
   font-size: 10px;
 }
 
-.product-image {
-  height: 100px;
+#product-image {
+  height: 50px;
   width: auto;
   max-width: 100%;
   margin: 5px;
@@ -40,7 +40,7 @@
   padding: 10px;
   border-radius: 5px;
   top: 30px; /* Adjust top position to avoid overlap */
-  left: -250px; /* Adjust as necessary to align with the cart icon */
+  left: -300px; /* Adjust as necessary to align with the cart icon */
   z-index: 1000;
 }
 

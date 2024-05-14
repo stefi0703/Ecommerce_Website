@@ -29,7 +29,7 @@ const Cart: React.FC<CartProps> = ({ cartCount, cartProducts }) => {
             <img
               src={product.images[0]}
               alt={product.title}
-              className="product-image"
+              id="product-image"
             />
           </div>
         ))}
