@@ -12,3 +12,37 @@
   padding: 2px 6px;
   font-size: 10px;
 }
+
+.favorite-details {
+  position: absolute;
+  width: 300px; /* Adjust width as needed */
+  background-color: #a3f19c; /* Adjust background color as needed */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border-radius: 5px;
+  top: 30px; /* Adjust top position to avoid overlap */
+  left: -200px; /* Adjust as necessary to align with the favorite icon */
+  z-index: 1000;
+}
+
+.favorite-details h4 {
+  margin-bottom: 10px;
+  color: #333; /* Adjust text color as needed */
+}
+
+.favorite-details .favorite-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.favorite-details .product-image {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.favorite-details p {
+  margin: 0;
+  color: #333; /* Adjust text color as needed */
+}

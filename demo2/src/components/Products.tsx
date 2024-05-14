@@ -6,7 +6,7 @@ import { ProductData } from "./Product";
 
 interface ProductsProps {
   onAddToCart: (product: ProductData) => void;
-  onAddToFavorite: () => void;
+  onAddToFavorite: (product: ProductData) => void;
 }
 
 const Products: React.FC<ProductsProps> = ({

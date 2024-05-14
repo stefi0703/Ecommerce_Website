@@ -10,14 +10,18 @@ interface NavBarProps {
   cartCount: number;
   favoriteCount: number;
   cartProducts: ProductData[];
+  favoriteProducts: ProductData[];
   onDeleteProduct: (productId: number, quantity: number) => void;
+  onRemoveFavorite: (productId: number) => void;
 }
 
 const NavBar: React.FC<NavBarProps> = ({
   cartCount,
   favoriteCount,
   cartProducts,
+  favoriteProducts,
   onDeleteProduct,
+  onRemoveFavorite,
 }) => {
   const [search, setSearch] = useState("");
 
@@ -39,7 +43,11 @@ const NavBar: React.FC<NavBarProps> = ({
         <div className="navbar-icons">
           <a href="/favorites" className="navbar-icon-link cart0">
             <span className="icon-text">Favorite</span>
-            <Favorite favoriteCount={favoriteCount} />
+            <Favorite
+              favoriteCount={favoriteCount}
+              favoriteProducts={favoriteProducts}
+              onRemoveFavorite={onRemoveFavorite}
+            />
           </a>
           <a href="/help" className="navbar-icon-link cart0">
             <span className="icon-text">Help</span>

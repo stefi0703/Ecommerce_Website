@@ -19,7 +19,7 @@ interface ProductProps {
   price: number;
   images: string[];
   onAddToCart: (product: ProductData) => void;
-  onAddToFavorite: () => void;
+  onAddToFavorite: (product: ProductData) => void;
 }
 
 const Product: React.FC<ProductProps> = ({
@@ -84,7 +84,20 @@ const Product: React.FC<ProductProps> = ({
         >
           Add to Cart
         </button>
-        <button onClick={onAddToFavorite} className="addtofavoritebutton">
+        <button
+          onClick={() =>
+            onAddToFavorite({
+              id,
+              title,
+              price,
+              category,
+              description,
+              images,
+              quantity: 1,
+            })
+          }
+          className="addtofavoritebutton"
+        >
           Add to Favorite
         </button>
       </div>

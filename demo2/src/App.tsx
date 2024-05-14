@@ -11,6 +11,7 @@ const App: React.FC = () => {
   const [cartCount, setCartCount] = useState<number>(0);
   const [favoriteCount, setFavoriteCount] = useState<number>(0);
   const [cartProducts, setCartProducts] = useState<ProductData[]>([]);
+  const [favoriteProducts, setFavoriteProducts] = useState<ProductData[]>([]);
 
   // handleAddToCart function should accept ProductData as argument
   // const handleAddToCart = (product: ProductData) => {
@@ -34,13 +35,21 @@ const App: React.FC = () => {
     }
   };
 
-  const handleAddToFavorite = () => {
+  const handleAddToFavorite = (product: ProductData) => {
     setFavoriteCount((prevCount) => prevCount + 1);
+    setFavoriteProducts([...favoriteProducts, product]);
   };
 
   const handleDeleteProduct = (productId: number, quantity: number) => {
     setCartCount((prevCount) => prevCount - quantity); // Decrement cartCount by the quantity of the deleted product
     setCartProducts(cartProducts.filter((product) => product.id !== productId));
+  };
+
+  const handleRemoveFavorite = (productId: number) => {
+    setFavoriteCount((prevCount) => prevCount - 1);
+    setFavoriteProducts(
+      favoriteProducts.filter((product) => product.id !== productId)
+    );
   };
 
   return (
@@ -50,6 +59,8 @@ const App: React.FC = () => {
         favoriteCount={favoriteCount}
         cartProducts={cartProducts}
         onDeleteProduct={handleDeleteProduct}
+        favoriteProducts={favoriteProducts}
+        onRemoveFavorite={handleRemoveFavorite}
       />
 
       <Products
