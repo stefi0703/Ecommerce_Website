@@ -1,6 +1,6 @@
 .product-item {
   width: 200px; /* Adjust width as needed */
-  height: 400px; /* Adjust height as needed */
+  height: auto;
   border: 1px solid #ddd;
   border-radius: 4px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -11,7 +11,9 @@
 
 .product-images-container {
   position: relative;
-  text-align: center;
+}
+.product-images-container img {
+  height: 100px;
 }
 
 .product-image {
