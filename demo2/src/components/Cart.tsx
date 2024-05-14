@@ -22,10 +22,16 @@ const Cart: React.FC<CartProps> = ({ cartCount, cartProducts }) => {
         <div className="cart-details">
           <h4>Products in Cart:</h4>
           {cartProducts.map((product) => (
-            <div key={product.id}>
+            <div key={product.id} className="cart-item">
               <p>
                 {product.title} - ${product.price}
               </p>
+              <img
+                src={product.images[0]}
+                alt={product.title}
+                className="product-image"
+                style={{ width: "50px", height: "50px" }}
+              />
             </div>
           ))}
         </div>

@@ -10,7 +10,7 @@ interface ProductsProps {
 }
 
 const Products: React.FC<ProductsProps> = ({
-  onAddToCart = (product: ProductData) => {},
+  onAddToCart,
   onAddToFavorite,
 }) => {
   const [products, setProducts] = useState<ProductData[]>([]);
