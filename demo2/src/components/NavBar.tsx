@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./NavBar.css";
 import hackademyLogo from "./logo-color.png";
 import helpIcon from "./help.png";
@@ -24,6 +24,42 @@ const NavBar: React.FC<NavBarProps> = ({
   onRemoveFavorite,
 }) => {
   const [search, setSearch] = useState("");
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [allProducts, setAllProducts] = useState<ProductData[]>([]);
+
+  useEffect(() => {
+    // Fetch all products from the API
+    fetch("https://dummyjson.com/products")
+      .then((response) => response.json())
+      .then((data) => setAllProducts(data.products))
+      .catch((error) => console.error("Error fetching products:", error));
+  }, []);
+
+  const handleDropdownHover = () => {
+    setShowDropdown(true);
+  };
+
+  const handleDropdownLeave = (
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  ) => {
+    // Check if the mouse is not over the dropdown
+    if (
+      !event.relatedTarget ||
+      !(event.relatedTarget as HTMLElement).closest(".dropdown")
+    ) {
+      setShowDropdown(false);
+    }
+  };
+
+  const handleCategoryClick = (category: string) => {
+    setSelectedCategory(category);
+    setShowDropdown(false);
+  };
+
+  const categories = Array.from(
+    new Set(allProducts.map((product) => product.category))
+  );
 
   return (
     <>
@@ -64,7 +100,30 @@ const NavBar: React.FC<NavBarProps> = ({
         </div>
       </nav>
       <nav className="sub-navbar">
-        <a href="#!">Produse</a>
+        <a
+          href="/"
+          className="navbar-brand"
+          onMouseEnter={handleDropdownHover}
+          onMouseLeave={handleDropdownLeave}
+        >
+          Produse
+          {showDropdown && (
+            <div className="dropdown">
+              <a href="#!" onClick={() => handleCategoryClick("")}>
+                All Categories
+              </a>
+              {categories.map((category) => (
+                <a
+                  href="#!"
+                  key={category}
+                  onClick={() => handleCategoryClick(category)}
+                >
+                  {category}
+                </a>
+              ))}
+            </div>
+          )}
+        </a>
         <a href="#!">Genius Deals</a>
         <a href="#!">Genius</a>
         <a href="#!">Rabla</a>

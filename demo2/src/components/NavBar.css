@@ -101,3 +101,25 @@
   margin-right: 5px;
   margin-left: 5px;
 }
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 8px 0;
+  border-radius: 4px;
+  z-index: 1000; /* Set a higher z-index to appear over the navbar */
+}
+
+.dropdown a {
+  display: block;
+  padding: 8px 16px;
+  color: #333;
+  text-decoration: none;
+}
+
+.dropdown a:hover {
+  background-color: #f4f4f4;
+}

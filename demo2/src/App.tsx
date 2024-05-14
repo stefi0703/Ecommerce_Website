@@ -13,12 +13,6 @@ const App: React.FC = () => {
   const [cartProducts, setCartProducts] = useState<ProductData[]>([]);
   const [favoriteProducts, setFavoriteProducts] = useState<ProductData[]>([]);
 
-  // handleAddToCart function should accept ProductData as argument
-  // const handleAddToCart = (product: ProductData) => {
-  //   setCartCount((prevCount) => prevCount + 1);
-  //   setCartProducts([...cartProducts, product]);
-  // };
-
   const handleAddToCart = (product: ProductData) => {
     setCartCount((prevCount) => prevCount + 1);
     const productExists = cartProducts.find((p) => p.id === product.id);
