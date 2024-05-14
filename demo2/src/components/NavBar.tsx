@@ -1,21 +1,23 @@
 import React, { useState } from "react";
 import "./NavBar.css";
 import hackademyLogo from "./logo-color.png";
-import helpIcon from "./help.png"; // Placeholder path for help icon
-import Cart from "./Cart"; // Import Cart component
-import Favorite from "./Favorite"; // Import Favorite component
-import { ProductData } from "./Product"; // Import ProductData type from Products component
+import helpIcon from "./help.png";
+import Cart from "./Cart";
+import Favorite from "./Favorite";
+import { ProductData } from "./Product";
 
 interface NavBarProps {
-  cartCount: number; // Pass cartCount as prop
-  favoriteCount: number; // Pass favoriteCount as prop
-  cartProducts: ProductData[]; // Pass cartProducts as prop
+  cartCount: number;
+  favoriteCount: number;
+  cartProducts: ProductData[];
+  onDeleteProduct: (productId: number, quantity: number) => void;
 }
 
 const NavBar: React.FC<NavBarProps> = ({
   cartCount,
   favoriteCount,
   cartProducts,
+  onDeleteProduct,
 }) => {
   const [search, setSearch] = useState("");
 
@@ -45,7 +47,11 @@ const NavBar: React.FC<NavBarProps> = ({
           </a>
           <a href="/cart" className="navbar-icon-link cart0">
             <span className="icon-text">Cart</span>
-            <Cart cartCount={cartCount} cartProducts={cartProducts} />
+            <Cart
+              cartCount={cartCount}
+              cartProducts={cartProducts}
+              onDeleteProduct={onDeleteProduct}
+            />
           </a>
         </div>
       </nav>

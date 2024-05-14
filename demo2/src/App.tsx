@@ -19,6 +19,7 @@ const App: React.FC = () => {
   // };
 
   const handleAddToCart = (product: ProductData) => {
+    setCartCount((prevCount) => prevCount + 1);
     const productExists = cartProducts.find((p) => p.id === product.id);
     if (productExists) {
       // If the product exists, increment the quantity
@@ -37,12 +38,18 @@ const App: React.FC = () => {
     setFavoriteCount((prevCount) => prevCount + 1);
   };
 
+  const handleDeleteProduct = (productId: number, quantity: number) => {
+    setCartCount((prevCount) => prevCount - quantity); // Decrement cartCount by the quantity of the deleted product
+    setCartProducts(cartProducts.filter((product) => product.id !== productId));
+  };
+
   return (
     <div className="app">
       <NavBar
         cartCount={cartCount}
         favoriteCount={favoriteCount}
         cartProducts={cartProducts}
+        onDeleteProduct={handleDeleteProduct}
       />
 
       <Products
