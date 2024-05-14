@@ -8,6 +8,7 @@ export interface ProductData {
   description: string;
   price: number;
   images: string[];
+  quantity: number;
 }
 
 interface ProductProps {
@@ -69,7 +70,15 @@ const Product: React.FC<ProductProps> = ({
         <p className="product-price">${price}</p>
         <button
           onClick={() =>
-            onAddToCart({ id, title, price, category, description, images })
+            onAddToCart({
+              id,
+              title,
+              price,
+              category,
+              description,
+              images,
+              quantity: 1,
+            })
           }
           className="addtocartbutton"
         >

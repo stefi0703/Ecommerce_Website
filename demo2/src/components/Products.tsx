@@ -5,7 +5,7 @@ import "./Products.css";
 import { ProductData } from "./Product";
 
 interface ProductsProps {
-  onAddToCart: (product: ProductData) => void; // Adjust the type here
+  onAddToCart: (product: ProductData) => void;
   onAddToFavorite: () => void;
 }
 

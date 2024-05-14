@@ -18,24 +18,23 @@ const Cart: React.FC<CartProps> = ({ cartCount, cartProducts }) => {
     >
       <img src={cartIcon} alt="Cart" className="cart-icon" />
       <span className="cart-count">{cartCount}</span>
-      {isHovered && cartProducts.length > 0 && (
-        <div className="cart-details">
-          <h4>Products in Cart:</h4>
-          {cartProducts.map((product) => (
-            <div key={product.id} className="cart-item">
-              <p>
-                {product.title} - ${product.price}
-              </p>
-              <img
-                src={product.images[0]}
-                alt={product.title}
-                className="product-image"
-                style={{ width: "50px", height: "50px" }}
-              />
-            </div>
-          ))}
-        </div>
-      )}
+      {/* {isHovered && cartProducts.length > 0 && ( */}
+      <div className="cart-details">
+        <h4>Products in Cart:</h4>
+        {cartProducts.map((product) => (
+          <div key={product.id} className="cart-item">
+            <p>
+              {product.title} - ${product.price} x {product.quantity}
+            </p>
+            <img
+              src={product.images[0]}
+              alt={product.title}
+              className="product-image"
+            />
+          </div>
+        ))}
+      </div>
+      {/* )} */}
       {isHovered && cartProducts.length === 0 && (
         <div className="cart-details">
           <p>No products in cart</p>
