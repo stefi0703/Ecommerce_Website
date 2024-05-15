@@ -12,6 +12,7 @@ const App: React.FC = () => {
   const [favoriteCount, setFavoriteCount] = useState<number>(0);
   const [cartProducts, setCartProducts] = useState<ProductData[]>([]);
   const [favoriteProducts, setFavoriteProducts] = useState<ProductData[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<string>("");
 
   const handleAddToCart = (product: ProductData) => {
     setCartCount((prevCount) => prevCount + 1);
@@ -63,11 +64,13 @@ const App: React.FC = () => {
         onDeleteProduct={handleDeleteProduct}
         favoriteProducts={favoriteProducts}
         onRemoveFavorite={handleRemoveFavorite}
+        setSelectedCategory={setSelectedCategory}
       />
 
       <Products
         onAddToCart={handleAddToCart}
         onAddToFavorite={handleAddToFavorite}
+        selectedCategory={selectedCategory} // Pass the value of selectedCategory instead of setSelectedCategory
       />
     </div>
   );

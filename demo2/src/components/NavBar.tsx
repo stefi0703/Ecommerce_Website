@@ -13,6 +13,7 @@ interface NavBarProps {
   favoriteProducts: ProductData[];
   onDeleteProduct: (productId: number, quantity: number) => void;
   onRemoveFavorite: (productId: number) => void;
+  setSelectedCategory: (category: string) => void;
 }
 
 const NavBar: React.FC<NavBarProps> = ({
@@ -22,10 +23,10 @@ const NavBar: React.FC<NavBarProps> = ({
   favoriteProducts,
   onDeleteProduct,
   onRemoveFavorite,
+  setSelectedCategory,
 }) => {
   const [search, setSearch] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState("");
   const [allProducts, setAllProducts] = useState<ProductData[]>([]);
 
   useEffect(() => {
@@ -35,22 +36,6 @@ const NavBar: React.FC<NavBarProps> = ({
       .then((data) => setAllProducts(data.products))
       .catch((error) => console.error("Error fetching products:", error));
   }, []);
-
-  const handleDropdownHover = () => {
-    setShowDropdown(true);
-  };
-
-  const handleDropdownLeave = (
-    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
-  ) => {
-    // Check if the mouse is not over the dropdown
-    if (
-      !event.relatedTarget ||
-      !(event.relatedTarget as HTMLElement).closest(".dropdown")
-    ) {
-      setShowDropdown(false);
-    }
-  };
 
   const handleCategoryClick = (category: string) => {
     setSelectedCategory(category);
@@ -103,15 +88,15 @@ const NavBar: React.FC<NavBarProps> = ({
         <a
           href="/"
           className="navbar-brand"
-          onMouseEnter={handleDropdownHover}
-          onMouseLeave={handleDropdownLeave}
+          onMouseEnter={() => setShowDropdown(true)}
         >
           Produse
           {showDropdown && (
-            <div className="dropdown">
-              <a href="#!" onClick={() => handleCategoryClick("")}>
-                All Categories
-              </a>
+            <div
+              className="dropdown"
+              onMouseLeave={() => setShowDropdown(false)}
+            >
+              <a onClick={() => handleCategoryClick("")}>All Categories</a>
               {categories.map((category) => (
                 <a
                   href="#!"

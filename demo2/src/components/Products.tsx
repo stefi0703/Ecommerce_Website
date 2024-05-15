@@ -7,20 +7,32 @@ import { ProductData } from "./Product";
 interface ProductsProps {
   onAddToCart: (product: ProductData) => void;
   onAddToFavorite: (product: ProductData) => void;
+  selectedCategory: string;
 }
 
 const Products: React.FC<ProductsProps> = ({
   onAddToCart,
   onAddToFavorite,
+  selectedCategory,
 }) => {
   const [products, setProducts] = useState<ProductData[]>([]);
 
   useEffect(() => {
     fetch("https://dummyjson.com/products")
       .then((response) => response.json())
-      .then((data) => setProducts(data.products))
+      .then((data) => {
+        if (selectedCategory) {
+          setProducts(
+            data.products.filter(
+              (p: ProductData) => p.category === selectedCategory
+            )
+          );
+        } else {
+          setProducts(data.products);
+        }
+      })
       .catch((error) => console.error("Error fetching products:", error));
-  }, []);
+  }, [selectedCategory]);
 
   return (
     <div className="products-container">

@@ -105,8 +105,8 @@
 .dropdown {
   position: absolute;
   top: 100%;
-  left: 0;
-  background-color: #fff;
+  left: 50px;
+  background-color: #a9da7c;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 8px 0;
   border-radius: 4px;
