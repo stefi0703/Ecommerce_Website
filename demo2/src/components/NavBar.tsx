@@ -90,7 +90,7 @@ const NavBar: React.FC<NavBarProps> = ({
           {showDropdown && (
             <div
               className="dropdown"
-              // onMouseLeave={() => setShowDropdown(false)}
+              onMouseLeave={() => setShowDropdown(false)}
             >
               <div
                 className="dropdown-item"
