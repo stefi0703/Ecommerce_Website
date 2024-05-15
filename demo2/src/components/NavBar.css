@@ -113,13 +113,24 @@
   z-index: 1000; /* Set a higher z-index to appear over the navbar */
 }
 
-.dropdown a {
-  display: block;
-  padding: 8px 16px;
-  color: #333;
-  text-decoration: none;
+.nav-button {
+  padding: 8px 12px;
+  margin-right: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.dropdown a:hover {
-  background-color: #f4f4f4;
+.nav-button:hover {
+  background-color: #3a941e;
+}
+
+.dropdown-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #3a941e;
 }

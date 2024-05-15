@@ -85,36 +85,37 @@ const NavBar: React.FC<NavBarProps> = ({
         </div>
       </nav>
       <nav className="sub-navbar">
-        <a
-          href="/"
-          className="navbar-brand"
-          onMouseEnter={() => setShowDropdown(true)}
-        >
+        <div className="nav-button" onMouseEnter={() => setShowDropdown(true)}>
           Produse
           {showDropdown && (
             <div
               className="dropdown"
-              onMouseLeave={() => setShowDropdown(false)}
+              // onMouseLeave={() => setShowDropdown(false)}
             >
-              <a onClick={() => handleCategoryClick("")}>All Categories</a>
+              <div
+                className="dropdown-item"
+                onClick={() => handleCategoryClick("")}
+              >
+                All Categories
+              </div>
               {categories.map((category) => (
-                <a
-                  href="#!"
+                <div
+                  className="dropdown-item"
                   key={category}
                   onClick={() => handleCategoryClick(category)}
                 >
                   {category}
-                </a>
+                </div>
               ))}
             </div>
           )}
-        </a>
-        <a href="#!">Genius Deals</a>
-        <a href="#!">Genius</a>
-        <a href="#!">Rabla</a>
-        <a href="#!">Cardul cu milioane de idei</a>
-        <a href="#!">Resigilate</a>
-        <a href="#!">Ofertele eMAG</a>
+        </div>
+        <div className="nav-button">Genius Deals</div>
+        <div className="nav-button">Genius</div>
+        <div className="nav-button">Rabla</div>
+        <div className="nav-button">Cardul cu milioane de idei</div>
+        <div className="nav-button">Resigilate</div>
+        <div className="nav-button">Ofertele eMAG</div>
       </nav>
     </>
   );
