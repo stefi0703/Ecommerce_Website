@@ -14,6 +14,7 @@ interface NavBarProps {
   onDeleteProduct: (productId: number, quantity: number) => void;
   onRemoveFavorite: (productId: number) => void;
   setSelectedCategory: (category: string) => void;
+  onToggleResigilate: () => void;
 }
 
 const NavBar: React.FC<NavBarProps> = ({
@@ -24,11 +25,13 @@ const NavBar: React.FC<NavBarProps> = ({
   onDeleteProduct,
   onRemoveFavorite,
   setSelectedCategory,
+  onToggleResigilate,
 }) => {
   const [search, setSearch] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
   const [allProducts, setAllProducts] = useState<ProductData[]>([]);
 
+  // Inside the useEffect hook where you fetch products
   useEffect(() => {
     // Fetch all products from the API
     fetch("https://dummyjson.com/products")
@@ -40,6 +43,10 @@ const NavBar: React.FC<NavBarProps> = ({
   const handleCategoryClick = (category: string) => {
     setSelectedCategory(category);
     setShowDropdown(false);
+  };
+
+  const handleResigilateClick = () => {
+    onToggleResigilate(); // New prop function to be provided by parent
   };
 
   const categories = Array.from(
@@ -114,7 +121,9 @@ const NavBar: React.FC<NavBarProps> = ({
         <div className="nav-button">Genius</div>
         <div className="nav-button">Rabla</div>
         <div className="nav-button">Cardul cu milioane de idei</div>
-        <div className="nav-button">Resigilate</div>
+        <div className="nav-button" onClick={handleResigilateClick}>
+          Resigilate
+        </div>
         <div className="nav-button">Ofertele eMAG</div>
       </nav>
     </>

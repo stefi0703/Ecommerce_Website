@@ -9,6 +9,7 @@ export interface ProductData {
   price: number;
   images: string[];
   quantity: number;
+  resigilate?: boolean;
 }
 
 interface ProductProps {

@@ -13,6 +13,11 @@ const App: React.FC = () => {
   const [cartProducts, setCartProducts] = useState<ProductData[]>([]);
   const [favoriteProducts, setFavoriteProducts] = useState<ProductData[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
+  const [showResigilate, setShowResigilate] = useState<boolean>(false);
+
+  const handleToggleResigilate = () => {
+    setShowResigilate(!showResigilate);
+  };
 
   const handleAddToCart = (product: ProductData) => {
     setCartCount((prevCount) => prevCount + 1);
@@ -54,6 +59,10 @@ const App: React.FC = () => {
       favoriteProducts.filter((product) => product.id !== productId)
     );
   };
+  // Log the value of showResigilate whenever it changes
+  // useEffect(() => {
+  //   console.log("showResigilate:", showResigilate);
+  // }, [showResigilate]);
 
   return (
     <div className="app">
@@ -65,12 +74,15 @@ const App: React.FC = () => {
         favoriteProducts={favoriteProducts}
         onRemoveFavorite={handleRemoveFavorite}
         setSelectedCategory={setSelectedCategory}
+        onToggleResigilate={handleToggleResigilate}
       />
 
       <Products
         onAddToCart={handleAddToCart}
         onAddToFavorite={handleAddToFavorite}
-        selectedCategory={selectedCategory} // Pass the value of selectedCategory instead of setSelectedCategory
+        selectedCategory={selectedCategory}
+        showResigilate={showResigilate}
+        // Pass the value of selectedCategory instead of setSelectedCategory
       />
     </div>
   );
