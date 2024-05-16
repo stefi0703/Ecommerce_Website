@@ -59,6 +59,20 @@ const App: React.FC = () => {
       favoriteProducts.filter((product) => product.id !== productId)
     );
   };
+
+  const handleUpdateProductQuantity = (
+    productId: number,
+    newQuantity: number
+  ) => {
+    setCartProducts(
+      cartProducts.map((product) =>
+        product.id === productId
+          ? { ...product, quantity: newQuantity }
+          : product
+      )
+    );
+  };
+
   // Log the value of showResigilate whenever it changes
   // useEffect(() => {
   //   console.log("showResigilate:", showResigilate);
@@ -75,6 +89,7 @@ const App: React.FC = () => {
         onRemoveFavorite={handleRemoveFavorite}
         setSelectedCategory={setSelectedCategory}
         onToggleResigilate={handleToggleResigilate}
+        onUpdateProductQuantity={handleUpdateProductQuantity}
       />
 
       <Products

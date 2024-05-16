@@ -40,7 +40,7 @@
   padding: 10px;
   border-radius: 5px;
   top: 30px; /* Adjust top position to avoid overlap */
-  left: -250px; /* Adjust as necessary to align with the cart icon */
+  left: -350px; /* Adjust as necessary to align with the cart icon */
   z-index: 1000;
 }
 
@@ -51,9 +51,10 @@
 
 .cart-details div {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
   margin-bottom: 5px;
+  color: #333;
 }
 
 .cart-details p {
@@ -87,4 +88,32 @@
 
 .delete-button:hover {
   background-color: #ff6666; /* Lighter red on hover */
+}
+
+.quantity-button {
+  background-color: #f0c14b;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quantity-button:hover {
+  background-color: #e6af35;
+}
+.nameqty {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#space {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }

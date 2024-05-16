@@ -12,6 +12,7 @@ interface NavBarProps {
   cartProducts: ProductData[];
   favoriteProducts: ProductData[];
   onDeleteProduct: (productId: number, quantity: number) => void;
+  onUpdateProductQuantity: (productId: number, newQuantity: number) => void;
   onRemoveFavorite: (productId: number) => void;
   setSelectedCategory: (category: string) => void;
   onToggleResigilate: () => void;
@@ -23,6 +24,7 @@ const NavBar: React.FC<NavBarProps> = ({
   cartProducts,
   favoriteProducts,
   onDeleteProduct,
+  onUpdateProductQuantity,
   onRemoveFavorite,
   setSelectedCategory,
   onToggleResigilate,
@@ -87,6 +89,7 @@ const NavBar: React.FC<NavBarProps> = ({
               cartCount={cartCount}
               cartProducts={cartProducts}
               onDeleteProduct={onDeleteProduct}
+              onUpdateProductQuantity={onUpdateProductQuantity}
             />
           </a>
         </div>
