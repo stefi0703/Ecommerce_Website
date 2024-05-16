@@ -88,6 +88,7 @@ const Products: React.FC<ProductsProps> = ({
           category={product.category}
           description={product.description}
           price={product.price}
+          discountPercentage={product.discountPercentage ?? 0} // Provide a default value of 0 if discountPercentage is undefined
           images={product.images}
           onAddToCart={onAddToCart}
           onAddToFavorite={onAddToFavorite}

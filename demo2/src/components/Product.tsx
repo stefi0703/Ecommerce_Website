@@ -7,6 +7,7 @@ export interface ProductData {
   category: string;
   description: string;
   price: number;
+  discountPercentage?: number;
   images: string[];
   quantity: number;
   resigilate?: boolean;
@@ -18,6 +19,7 @@ interface ProductProps {
   category: string;
   description: string;
   price: number;
+  discountPercentage: number;
   images: string[];
   onAddToCart: (product: ProductData) => void;
   onAddToFavorite: (product: ProductData) => void;
@@ -29,6 +31,7 @@ const Product: React.FC<ProductProps> = ({
   category,
   description,
   price,
+  discountPercentage,
   images,
   onAddToCart,
   onAddToFavorite,
@@ -44,6 +47,9 @@ const Product: React.FC<ProductProps> = ({
       (prevIndex) => (prevIndex - 1 + images.length) % images.length
     );
   };
+
+  // Calculate discounted price
+  const discountedPrice = price * (1 - discountPercentage / 100);
 
   return (
     <div className="product-item">
@@ -68,7 +74,10 @@ const Product: React.FC<ProductProps> = ({
         <h3 className="product-title">{title}</h3>
         <p className="product-category">Category:{category}</p>
         <p className="product-description">{description}</p>
-        <p className="product-price">${price}</p>
+        <div className="product-price">
+          <span className="product-price-original">${price}</span>
+          <span>${discountedPrice.toFixed(2)}</span>
+        </div>
         <button
           onClick={() =>
             onAddToCart({
