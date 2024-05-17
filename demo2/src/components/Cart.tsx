@@ -59,7 +59,7 @@ const Cart: React.FC<CartProps> = ({
     <div
       className="cart-icon-container"
       onMouseEnter={() => setIsHovered(true)}
-      // onMouseLeave={() => setIsHovered(false)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <img src={cartIcon} alt="Cart" className="cart-icon" />
       <span className="cart-count">{cartCount}</span>

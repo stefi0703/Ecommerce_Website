@@ -1,12 +1,13 @@
 .product-item {
-  width: 200px; /* Adjust width as needed */
-  height: auto;
+  width: 230px; /* Adjust width as needed */
+  height: 100%;
   border: 1px solid #ddd;
   border-radius: 4px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin: 10px;
   overflow: hidden;
   font-family: "Arial", sans-serif;
+  display: inline;
 }
 
 .product-images-container {
@@ -27,7 +28,7 @@
 }
 
 .product-title {
-  font-size: 18px;
+  font-size: 17px;
   margin-bottom: 5px;
   overflow: hidden;
   white-space: nowrap;
@@ -41,6 +42,15 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+.product-category {
+  font-size: 16px;
+}
+
+.product-brand {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 5px;
+}
 
 .product-price {
   font-size: 20px;
@@ -48,12 +58,18 @@
   margin-bottom: 10px;
 }
 
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .addtocartbutton {
   background-color: #f0c14b;
   cursor: pointer;
   transition: background-color 0.2s ease;
   margin: 5px;
-  padding: 5px 10px;
+  padding: 3px 18px;
 }
 
 .addtocartbutton:hover {
@@ -65,7 +81,7 @@
   cursor: pointer;
   transition: background-color 0.2s ease;
   margin: 5px;
-  padding: 5px 10px;
+  padding: 3px 10px;
 }
 
 .addtofavoritebutton:hover {

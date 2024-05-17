@@ -40,7 +40,7 @@
   padding: 10px;
   border-radius: 5px;
   top: 30px; /* Adjust top position to avoid overlap */
-  left: -350px; /* Adjust as necessary to align with the cart icon */
+  left: -300px; /* Adjust as necessary to align with the cart icon */
   z-index: 1000;
 }
 

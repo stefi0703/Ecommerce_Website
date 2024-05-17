@@ -14,6 +14,7 @@ const App: React.FC = () => {
   const [favoriteProducts, setFavoriteProducts] = useState<ProductData[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [showResigilate, setShowResigilate] = useState<boolean>(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handleToggleResigilate = () => {
     setShowResigilate(!showResigilate);
@@ -90,6 +91,7 @@ const App: React.FC = () => {
         setSelectedCategory={setSelectedCategory}
         onToggleResigilate={handleToggleResigilate}
         onUpdateProductQuantity={handleUpdateProductQuantity}
+        setSearchQuery={setSearchQuery}
       />
 
       <Products
@@ -97,6 +99,7 @@ const App: React.FC = () => {
         onAddToFavorite={handleAddToFavorite}
         selectedCategory={selectedCategory}
         showResigilate={showResigilate}
+        searchQuery={searchQuery}
         // Pass the value of selectedCategory instead of setSelectedCategory
       />
     </div>

@@ -11,12 +11,14 @@ export interface ProductData {
   images: string[];
   quantity: number;
   resigilate?: boolean;
+  brand?: string;
 }
 
 interface ProductProps {
   id: number;
   title: string;
   category: string;
+  brand: string;
   description: string;
   price: number;
   discountPercentage: number;
@@ -29,6 +31,7 @@ const Product: React.FC<ProductProps> = ({
   id,
   title,
   category,
+  brand,
   description,
   price,
   discountPercentage,
@@ -73,43 +76,46 @@ const Product: React.FC<ProductProps> = ({
       <div className="product-details">
         <h3 className="product-title">{title}</h3>
         <p className="product-category">Category:{category}</p>
+        <p className="product-brand">Brand:{brand}</p>
         <p className="product-description">{description}</p>
         <div className="product-price">
           <span className="product-price-original">${price}</span>
           <span>${discountedPrice.toFixed(2)}</span>
         </div>
-        <button
-          onClick={() =>
-            onAddToCart({
-              id,
-              title,
-              price,
-              category,
-              description,
-              images,
-              quantity: 1,
-            })
-          }
-          className="addtocartbutton"
-        >
-          Add to Cart
-        </button>
-        <button
-          onClick={() =>
-            onAddToFavorite({
-              id,
-              title,
-              price,
-              category,
-              description,
-              images,
-              quantity: 1,
-            })
-          }
-          className="addtofavoritebutton"
-        >
-          Add to Favorite
-        </button>
+        <div className="buttons">
+          <button
+            onClick={() =>
+              onAddToCart({
+                id,
+                title,
+                price,
+                category,
+                description,
+                images,
+                quantity: 1,
+              })
+            }
+            className="addtocartbutton"
+          >
+            Add to Cart
+          </button>
+          <button
+            onClick={() =>
+              onAddToFavorite({
+                id,
+                title,
+                price,
+                category,
+                description,
+                images,
+                quantity: 1,
+              })
+            }
+            className="addtofavoritebutton"
+          >
+            Add to Favorite
+          </button>
+        </div>
       </div>
     </div>
   );

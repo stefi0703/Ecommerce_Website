@@ -16,6 +16,7 @@ interface NavBarProps {
   onRemoveFavorite: (productId: number) => void;
   setSelectedCategory: (category: string) => void;
   onToggleResigilate: () => void;
+  setSearchQuery: (query: string) => void;
 }
 
 const NavBar: React.FC<NavBarProps> = ({
@@ -28,6 +29,7 @@ const NavBar: React.FC<NavBarProps> = ({
   onRemoveFavorite,
   setSelectedCategory,
   onToggleResigilate,
+  setSearchQuery,
 }) => {
   const [search, setSearch] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
@@ -51,6 +53,11 @@ const NavBar: React.FC<NavBarProps> = ({
     onToggleResigilate(); // New prop function to be provided by parent
   };
 
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(event.target.value);
+    setSearchQuery(event.target.value); // Update the global search state
+  };
+
   const categories = Array.from(
     new Set(allProducts.map((product) => product.category))
   );
@@ -67,7 +74,7 @@ const NavBar: React.FC<NavBarProps> = ({
             className="search-input"
             placeholder="Searching anything?"
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={handleSearchChange}
           />
         </div>
         <div className="navbar-icons">
