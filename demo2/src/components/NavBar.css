@@ -22,7 +22,7 @@
     to right,
     #38b449,
     #6fbf6b,
-    #0b5805
+    #12800a
   ); /* Sub-navbar has a different background */
   height: 40px; /* Define a fixed height */
   display: flex;
@@ -58,6 +58,7 @@
   border: 1px solid #ccc; /* Light border */
   background-color: #f8f8f8; /* Light gray background */
   transition: border-color 0.3s; /* Smooth border color transition */
+  border-color: #0e7407;
 }
 
 .search-input:focus {
@@ -74,7 +75,7 @@
 
 .navbar-icon-link {
   text-decoration: none; /* Remove default underline */
-  color: #0b5805; /* Text color */
+  color: #0e7407; /* Text color */
   font-size: 16px; /* Adjust font size */
   margin-right: 20px; /* Add some margin between links */
   display: flex; /* Align items in a row */
@@ -121,8 +122,12 @@
   transition: background-color 0.3s ease;
 }
 
+.nav-button.active {
+  background-color: #266911; /* Darker background for active state */
+}
+
 .nav-button:hover {
-  background-color: #3a941e;
+  background-color: #255c14;
 }
 
 .dropdown-item {

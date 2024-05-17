@@ -34,6 +34,7 @@ const NavBar: React.FC<NavBarProps> = ({
   const [search, setSearch] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
   const [allProducts, setAllProducts] = useState<ProductData[]>([]);
+  const [isResigilateActive, setIsResigilateActive] = useState(false);
 
   // Inside the useEffect hook where you fetch products
   useEffect(() => {
@@ -50,6 +51,7 @@ const NavBar: React.FC<NavBarProps> = ({
   };
 
   const handleResigilateClick = () => {
+    setIsResigilateActive(!isResigilateActive);
     onToggleResigilate(); // New prop function to be provided by parent
   };
 
@@ -131,9 +133,13 @@ const NavBar: React.FC<NavBarProps> = ({
         <div className="nav-button">Genius</div>
         <div className="nav-button">Rabla</div>
         <div className="nav-button">Cardul cu milioane de idei</div>
-        <div className="nav-button" onClick={handleResigilateClick}>
+        <div
+          onClick={handleResigilateClick}
+          className={isResigilateActive ? "nav-button active" : "nav-button"}
+        >
           Resigilate
         </div>
+
         <div className="nav-button">Ofertele eMAG</div>
       </nav>
     </>

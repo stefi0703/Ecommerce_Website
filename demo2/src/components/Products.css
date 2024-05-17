@@ -3,5 +3,6 @@
   flex-wrap: wrap;
   gap: 10px; /* This adds space between the products */
   justify-content: center;
-  background-color: #f7e8d4;
+
+  background: linear-gradient(#cfeeb3, #12a0a0);
 }
