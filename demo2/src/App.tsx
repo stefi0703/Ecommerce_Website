@@ -14,10 +14,20 @@ const App: React.FC = () => {
   const [favoriteProducts, setFavoriteProducts] = useState<ProductData[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [showResigilate, setShowResigilate] = useState<boolean>(false);
+  const [showDiscounts, setShowDiscounts] = useState<boolean>(false);
+  const [showRating, setShowRating] = useState<boolean>(false);
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleToggleResigilate = () => {
     setShowResigilate(!showResigilate);
+  };
+
+  const handleToggleDiscount = () => {
+    setShowDiscounts(!showDiscounts);
+  };
+
+  const handleToggleRating = () => {
+    setShowRating(!showRating);
   };
 
   const handleAddToCart = (product: ProductData) => {
@@ -74,11 +84,6 @@ const App: React.FC = () => {
     );
   };
 
-  // Log the value of showResigilate whenever it changes
-  // useEffect(() => {
-  //   console.log("showResigilate:", showResigilate);
-  // }, [showResigilate]);
-
   return (
     <div className="app">
       <NavBar
@@ -90,6 +95,8 @@ const App: React.FC = () => {
         onRemoveFavorite={handleRemoveFavorite}
         setSelectedCategory={setSelectedCategory}
         onToggleResigilate={handleToggleResigilate}
+        onToggleDiscount={handleToggleDiscount}
+        onToggleRating={handleToggleRating}
         onUpdateProductQuantity={handleUpdateProductQuantity}
         setSearchQuery={setSearchQuery}
       />
@@ -99,6 +106,8 @@ const App: React.FC = () => {
         onAddToFavorite={handleAddToFavorite}
         selectedCategory={selectedCategory}
         showResigilate={showResigilate}
+        sortByDiscount={showDiscounts}
+        sortByRating={showRating}
         searchQuery={searchQuery}
         // Pass the value of selectedCategory instead of setSelectedCategory
       />

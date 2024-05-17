@@ -16,6 +16,8 @@ interface NavBarProps {
   onRemoveFavorite: (productId: number) => void;
   setSelectedCategory: (category: string) => void;
   onToggleResigilate: () => void;
+  onToggleDiscount: () => void;
+  onToggleRating: () => void;
   setSearchQuery: (query: string) => void;
 }
 
@@ -29,12 +31,16 @@ const NavBar: React.FC<NavBarProps> = ({
   onRemoveFavorite,
   setSelectedCategory,
   onToggleResigilate,
+  onToggleDiscount,
+  onToggleRating,
   setSearchQuery,
 }) => {
   const [search, setSearch] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
   const [allProducts, setAllProducts] = useState<ProductData[]>([]);
   const [isResigilateActive, setIsResigilateActive] = useState(false);
+  const [isDiscountsActive, setIsDiscountsActive] = useState(false);
+  const [isRatingActive, setIsRatingActive] = useState(false);
 
   // Inside the useEffect hook where you fetch products
   useEffect(() => {
@@ -52,7 +58,17 @@ const NavBar: React.FC<NavBarProps> = ({
 
   const handleResigilateClick = () => {
     setIsResigilateActive(!isResigilateActive);
-    onToggleResigilate(); // New prop function to be provided by parent
+    onToggleResigilate();
+  };
+
+  const handleSortByDiscount = () => {
+    setIsDiscountsActive(!isDiscountsActive);
+    onToggleDiscount(); // New prop function to be provided by parent
+  };
+
+  const handleSortByRating = () => {
+    setIsRatingActive(!isRatingActive);
+    onToggleRating(); // New prop function to be provided by parent
   };
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -105,7 +121,7 @@ const NavBar: React.FC<NavBarProps> = ({
       </nav>
       <nav className="sub-navbar">
         <div className="nav-button" onMouseEnter={() => setShowDropdown(true)}>
-          Produse
+          Products
           {showDropdown && (
             <div
               className="dropdown"
@@ -129,18 +145,24 @@ const NavBar: React.FC<NavBarProps> = ({
             </div>
           )}
         </div>
-        <div className="nav-button">Genius Deals</div>
-        <div className="nav-button">Genius</div>
-        <div className="nav-button">Rabla</div>
-        <div className="nav-button">Cardul cu milioane de idei</div>
+        <div
+          className={isDiscountsActive ? "nav-button active" : "nav-button"}
+          onClick={handleSortByDiscount}
+        >
+          Discounts
+        </div>
+        <div
+          className={isRatingActive ? "nav-button active" : "nav-button"}
+          onClick={handleSortByRating}
+        >
+          Rating
+        </div>
         <div
           onClick={handleResigilateClick}
           className={isResigilateActive ? "nav-button active" : "nav-button"}
         >
-          Resigilate
+          Resealed
         </div>
-
-        <div className="nav-button">Ofertele eMAG</div>
       </nav>
     </>
   );

@@ -8,6 +8,7 @@ export interface ProductData {
   description: string;
   price: number;
   discountPercentage?: number;
+  rating?: number;
   images: string[];
   quantity: number;
   resigilate?: boolean;

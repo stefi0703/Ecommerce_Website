@@ -1,4 +1,3 @@
-// Products.tsx
 import React, { useState, useEffect } from "react";
 import Product from "./Product";
 import "./Products.css";
@@ -9,6 +8,8 @@ interface ProductsProps {
   onAddToFavorite: (product: ProductData) => void;
   selectedCategory: string;
   showResigilate: boolean;
+  sortByDiscount?: boolean;
+  sortByRating?: boolean;
   searchQuery?: string;
 }
 
@@ -16,6 +17,8 @@ const Products: React.FC<ProductsProps> = ({
   onAddToCart,
   onAddToFavorite,
   selectedCategory,
+  sortByDiscount,
+  sortByRating,
   showResigilate,
   searchQuery = "",
 }) => {
@@ -36,7 +39,7 @@ const Products: React.FC<ProductsProps> = ({
         });
 
         // Apply all filters in one go to avoid multiple state updates
-        const filteredProducts = initialProducts.filter(
+        let filteredProducts = initialProducts.filter(
           (product: ProductData) => {
             const matchesCategory = selectedCategory
               ? product.category === selectedCategory
@@ -61,10 +64,30 @@ const Products: React.FC<ProductsProps> = ({
           }
         );
 
+        // Apply sorting based on discount or rating
+        // Apply sorting based on discount or rating
+        if (sortByDiscount) {
+          filteredProducts.sort(
+            (a: ProductData, b: ProductData) =>
+              (b.discountPercentage ?? 0) - (a.discountPercentage ?? 0)
+          );
+        } else if (sortByRating) {
+          filteredProducts.sort(
+            (a: ProductData, b: ProductData) =>
+              (b.rating ?? 0) - (a.rating ?? 0)
+          );
+        }
+
         setProducts(filteredProducts);
       })
       .catch((error) => console.error("Error fetching products:", error));
-  }, [selectedCategory, showResigilate, searchQuery]);
+  }, [
+    selectedCategory,
+    showResigilate,
+    searchQuery,
+    sortByDiscount,
+    sortByRating,
+  ]);
 
   useEffect(() => {
     if (showResigilate) {
