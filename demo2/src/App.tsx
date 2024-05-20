@@ -1,5 +1,5 @@
 // App.tsx
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import NavBar from "./components/NavBar";
 import Products from "./components/Products";
 import { ProductData } from "./components/Product";

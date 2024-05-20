@@ -27,6 +27,7 @@
   height: 40px; /* Define a fixed height */
   display: flex;
   justify-content: space-around; /* Space items evenly */
+  position: relative;
 }
 
 .sub-navbar a {
@@ -105,13 +106,14 @@
 
 .dropdown {
   position: absolute;
-  top: 100%;
-  left: 160px;
+  top: 100%; /* Place it right below the nav button */
+  left: 3%; /* Start from the center of the nav button */
   background-color: #a9da7c;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 8px 0;
   border-radius: 4px;
-  z-index: 1000; /* Set a higher z-index to appear over the navbar */
+  min-width: 20vw;
+  z-index: 1000; /* To be on top of other content */
 }
 
 .nav-button {
@@ -131,7 +133,7 @@
 }
 
 .dropdown-item {
-  padding: 8px 12px;
+  padding: 3px 6px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }

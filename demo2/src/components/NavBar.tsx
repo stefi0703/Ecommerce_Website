@@ -38,9 +38,9 @@ const NavBar: React.FC<NavBarProps> = ({
   const [search, setSearch] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
   const [allProducts, setAllProducts] = useState<ProductData[]>([]);
-  const [isResigilateActive, setIsResigilateActive] = useState(false);
-  const [isDiscountsActive, setIsDiscountsActive] = useState(false);
-  const [isRatingActive, setIsRatingActive] = useState(false);
+  const [isResigilateActive] = useState(false);
+  const [isDiscountsActive] = useState(false);
+  const [isRatingActive] = useState(false);
 
   // Inside the useEffect hook where you fetch products
   useEffect(() => {
@@ -57,17 +57,14 @@ const NavBar: React.FC<NavBarProps> = ({
   };
 
   const handleResigilateClick = () => {
-    setIsResigilateActive(!isResigilateActive);
     onToggleResigilate();
   };
 
   const handleSortByDiscount = () => {
-    setIsDiscountsActive(!isDiscountsActive);
     onToggleDiscount(); // New prop function to be provided by parent
   };
 
   const handleSortByRating = () => {
-    setIsRatingActive(!isRatingActive);
     onToggleRating(); // New prop function to be provided by parent
   };
 
