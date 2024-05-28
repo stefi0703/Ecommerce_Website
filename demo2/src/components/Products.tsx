@@ -27,18 +27,15 @@ const Products: React.FC<ProductsProps> = ({
     fetch("https://dummyjson.com/products")
       .then((response) => response.json())
       .then((data) => {
-        // Initialize all products with resigilate set to false
         const initialProducts = data.products.map((product: ProductData) => ({
           ...product,
-          resigilate: false, // Simulate a random resigilate status for demonstration
+          resigilate: false, 
         }));
 
-        // Simulate setting 5 random products to resigilate = true
         initialProducts.slice(0, 5).forEach((product: ProductData) => {
           product.resigilate = true;
         });
 
-        // Apply all filters in one go to avoid multiple state updates
         let filteredProducts = initialProducts.filter(
           (product: ProductData) => {
             const matchesCategory = selectedCategory
@@ -64,7 +61,6 @@ const Products: React.FC<ProductsProps> = ({
           }
         );
 
-        // Apply sorting based on discount or rating
         // Apply sorting based on discount or rating
         if (sortByDiscount) {
           filteredProducts.sort(
