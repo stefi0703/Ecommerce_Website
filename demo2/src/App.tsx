@@ -75,6 +75,7 @@ const App: React.FC = () => {
     productId: number,
     newQuantity: number
   ) => {
+    //setCartCount(newQuantity + 1); // Update cartCount based on the new quantity
     setCartProducts(
       cartProducts.map((product) =>
         product.id === productId
